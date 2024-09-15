@@ -5,7 +5,7 @@ import GenreSelection from './pages/GenreSelection';
 
 function App() {
   return (
-    <div className='bg-red-500'>
+    <div >
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
