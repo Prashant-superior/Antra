@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    <div >
+    <div className='bg-gradient-to-l from-sky-400 via-rose-400 to-lime-400 min-h-screen w-full'>
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
