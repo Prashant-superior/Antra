@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import FourOptions from "../components/FourOptions";
 import SongBar from "../components/SongBar";
 import { supabase } from '../services/supabaseClient';
+import { useLocation } from "react-router-dom";
 
 const Game = () => {
   const [songs, setSongs] = useState([]);
   const [options, setOptions] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
+
+  const location = useLocation();
+  console.log(location);
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -68,6 +72,9 @@ const Game = () => {
         <div className="m-3">
           {options.length === 4 && (
             <FourOptions 
+                col1={location.state.teamColor1} 
+                col2={location.state.teamColor2}
+                
               first={options[0].title} 
               second={options[1].title} 
               third={options[2].title} 
