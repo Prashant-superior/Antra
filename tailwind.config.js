@@ -9,6 +9,10 @@ export default {
       colors: {
         't1': '#9bd5ef',
       },
+      maxWidth: {
+        'sm': '20rem',
+        'smm':'35rem',
+      }
     },
   },
   plugins: [],
