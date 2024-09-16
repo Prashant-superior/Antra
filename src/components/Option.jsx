@@ -1,6 +1,6 @@
 import SingleButton from "./SingleButton";
 
-const Option = ({title="helo"}) => {
+const Option = ({title}) => {
 
     return (
         <>
