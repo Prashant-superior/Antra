@@ -1,6 +1,6 @@
 import SingleButton from "./SingleButton";
 
-const Option = ({title,col1,col2}) => {
+const Option = ({title,col1,col2, correct}) => {
 
     return (
         <>
@@ -11,8 +11,8 @@ const Option = ({title,col1,col2}) => {
                 </div>
 
                 <div className="flex justify-around mb-2">
-                    <SingleButton color={col1} />
-                    <SingleButton color={col2} />
+                    <SingleButton color={col1} correct={correct} />
+                    <SingleButton color={col2} correct={correct}/>
                 </div>
             </div>
 

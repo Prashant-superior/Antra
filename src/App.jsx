@@ -3,6 +3,7 @@ import LandingPage from './pages/LandingPage';
 import './App.css';
 import GenreSelection from './pages/GenreSelection';
 import Game from './pages/Game';
+import Trial from './components/Trial';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/genre" element={<GenreSelection/>} />
           <Route path="/game" element={<Game/>} />
+          <Route path='/trial' element={<Trial/>}/>
         </Routes>
       </Router>
     </div>

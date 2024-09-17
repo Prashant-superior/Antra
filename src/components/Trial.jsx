@@ -1,4 +1,4 @@
-<IconSkipForward className="text-gray-600" />
+{/* <IconSkipForward className="text-gray-600" />
 
 const IconSkipForward = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
@@ -30,4 +30,19 @@ export default function Option({ title, description,col1,col2 }) {
     )
 
 
+} */}
+
+
+import Option from "./Option";
+
+const Trial =()=>{
+    return (
+        <>
+            <Option title="Option 1"   col1="red" col2="blue"/>
+            <Option title="Option 2"  col1="red" col2="blue" />
+            <Option title="Option 3"   col1="red" col2="blue" />
+        </>
+    )
 }
+
+export default Trial;

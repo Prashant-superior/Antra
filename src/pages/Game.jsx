@@ -19,7 +19,7 @@ const Game = () => {
     }
     return array;
   }
-  
+
   function getRandomElements(array, count) {
     const shuffled = shuffleArray([...array]);
     return shuffled.slice(0, count);
@@ -71,15 +71,17 @@ const Game = () => {
 
         <div className="m-3">
           {options.length === 4 && (
-            <FourOptions 
-                col1={location.state.teamColor1} 
-                col2={location.state.teamColor2}
-                
-              first={options[0].title} 
-              second={options[1].title} 
-              third={options[2].title} 
-              fourth={options[3].title} 
-              onClick={(title) => {}}
+            <FourOptions
+              col1={location.state.teamColor1}
+              col2={location.state.teamColor2}
+
+              first={options[0].title}
+              second={options[1].title}
+              third={options[2].title}
+              fourth={options[3].title}
+
+              correct={currentSong.title}
+              onClick={(title) => { }}
             />
           )}
         </div>
