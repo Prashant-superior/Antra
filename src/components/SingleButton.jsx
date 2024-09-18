@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SingleButton({ color = '#cae9e5', correct }) {
+export default function SingleButton({ color = '#cae9e5', correct, onClick }) {
   // Function to darken a hex color (for the shadow effect)
   const darkenColor = (hex, percent) => {
     // Remove the # if present
@@ -26,19 +26,18 @@ export default function SingleButton({ color = '#cae9e5', correct }) {
   };
 
   return (
-    <><button 
-    onClick={()=>{
-      console.log(`${color} ${correct}`)
-    }}
+    <>   <button 
+      onClick={() => onClick(correct)}
+      className={`
+        relative h-[25px] w-full overflow-hidden border bg-white px-3 
+        shadow-2xl transition-all before:absolute before:bottom-0 before:right-0 before:top-0 
+        before:z-0 before:h-full before:w-0 before:transition-all before:duration-500 
+        hover:before:right-auto hover:before:left-0 hover:before:w-full 
+      `}
+      style={buttonStyle}
+    >
 
-    className={`
-      relative h-[25px] w-full overflow-hidden border bg-white px-3 
-      shadow-2xl transition-all before:absolute before:bottom-0 before:right-0 before:top-0 
-      before:z-0 before:h-full before:w-0 before:transition-all before:duration-500 
-      hover:before:right-auto hover:before:left-0 hover:before:w-full 
-    `}
-    style={buttonStyle}
-  >
+    
     <style jsx="true">{`
       button {
         color: var(--swipe-color);

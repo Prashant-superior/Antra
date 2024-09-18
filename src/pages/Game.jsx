@@ -8,9 +8,11 @@ const Game = () => {
   const [songs, setSongs] = useState([]);
   const [options, setOptions] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
-
+  const [teamScore1, setTeamScore1] = useState(0);
+  const [teamScore2, setTeamScore2] = useState(0);
+  const [round, setRound] = useState(0);
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -42,7 +44,7 @@ const Game = () => {
 
   useEffect(() => {
     if (songs.length > 0) {
-      const current = songs[0]; // Assume the first song is the current song
+      const current = songs[round % songs.length];  // Assume the first song is the current song
       setCurrentSong(current);
 
       // Get three random options excluding the current song
@@ -53,7 +55,20 @@ const Game = () => {
 
       setOptions(allOptions);
     }
-  }, [songs]);
+  }, [songs,round]);
+
+  
+  const handleOptionClick = (team, isCorrect) => {
+    if (isCorrect) {
+      if (team === 1) {
+        setTeamScore1(prevScore => prevScore + 1);
+      } else if (team === 2) {
+        setTeamScore2(prevScore => prevScore + 1);
+      } 
+    }
+    setRound(round => round + 1);  // Move to next round
+    console.log(`Team ${team} clicked! Correct: ${isCorrect}`);
+  };
 
   return (
     <>
@@ -79,11 +94,15 @@ const Game = () => {
               second={options[1].title}
               third={options[2].title}
               fourth={options[3].title}
-
+              onOptionClick={handleOptionClick}
               correct={currentSong.title}
-              onClick={(title) => { }}
             />
           )}
+        </div>
+        <div>
+          Team 1 Score: {teamScore1}
+          <br />
+          Team 2 Score: {teamScore2}
         </div>
       </div>
     </>
