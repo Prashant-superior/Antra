@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
 
-    const [grpName1, setGrpName1] = React.useState("");
-    const [grpName2, setGrpName2] = React.useState("");
+    const [grpName1, setGrpName1] = React.useState("The Accountaholics");
+    const [grpName2, setGrpName2] = React.useState("Keyboard Annihilators");
     const [teamColor1, setTeamColor1] = React.useState("#9bd5ef");
     const [teamColor2, setTeamColor2] = React.useState("#7ae582");
 
@@ -41,7 +41,7 @@ const LandingPage = () => {
     }
 
     return (
-        <div className="flex items-center justify-center pt-28 ">
+        <div className="flex items-center justify-center pt-14">
             <div className="flex flex-col space-y-6">
                 <div className=" ">
                     <div className=" flex flex-col">
@@ -59,7 +59,7 @@ const LandingPage = () => {
                     </div>
 
                     <div className="mb-8 flex flex-col">
-                        <label htmlFor="Team 1 Name" className="block mb-2 px-2 text-start text-lg font-medium text-gray-900 dark:text-black">Team 1 Name</label>
+                        <label htmlFor="Team 1 Name" className="block mb-2 pt-1 px-2 text-start text-lg font-medium text-gray-900 dark:text-black">Team 1 Name</label>
                         <input type="text" id="Team 1 Name" className="bg-gray-50 border border-gray-300 text-zinc-950 text-sm font-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" style={{ backgroundColor: teamColor1 }} onChange={(e) => handlename1(e)} />
                     </div>
                 </div>

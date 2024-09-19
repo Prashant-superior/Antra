@@ -3,6 +3,7 @@ import FourOptions from "../components/FourOptions";
 import SongBar from "../components/SongBar";
 import { supabase } from '../services/supabaseClient';
 import { useLocation } from "react-router-dom";
+import ScoreCard from "../components/ScoreCard";
 
 const Game = () => {
   const [songs, setSongs] = useState([]);
@@ -65,13 +66,25 @@ const Game = () => {
       } else if (team === 2) {
         setTeamScore2(prevScore => prevScore + 1);
       } 
+      setRound(round => round + 1);  // Move to next round
+
     }
-    setRound(round => round + 1);  // Move to next round
     console.log(`Team ${team} clicked! Correct: ${isCorrect}`);
   };
 
+
+
   return (
     <>
+
+      <div className="flex justify-around pt-10 mx-10">
+      <ScoreCard teamColor={location.state.teamColor1} teamScore={teamScore1} teamName={location.state.grpName1}/>
+      <ScoreCard teamColor={location.state.teamColor2} teamScore={teamScore2} teamName={location.state.grpName2}/>
+      </div>
+      
+      
+
+
       <div className="flex flex-col justify-center">
         {/* Ensure songs array has at least one element before accessing it */}
         {currentSong && <SongBar songUrl={currentSong.url} />}
@@ -99,11 +112,7 @@ const Game = () => {
             />
           )}
         </div>
-        <div>
-          Team 1 Score: {teamScore1}
-          <br />
-          Team 2 Score: {teamScore2}
-        </div>
+        
       </div>
     </>
   );

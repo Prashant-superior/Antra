@@ -51,7 +51,7 @@ export default function SongBar({ songUrl, albumCover, title, artist }) {
 
                         <div className="w-full flex justify-center">
 
-                            <div className="flex justify-between items-center mt-8">
+                            <div className="flex justify-between items-center ">
                                 <button
                                     onClick={togglePlay}
                                     className="text-white p-4 rounded-full bg-red-400 shadow-lg"
