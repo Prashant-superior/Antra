@@ -63,9 +63,18 @@ const Game = () => {
     if (isCorrect) {
       if (team === 1) {
         setTeamScore1(prevScore => prevScore + 1);
+        if(teamScore1>=5 ){
+          alert("Game Over T1 wins");
+          window.location.href = "/over"; // Redirect to home page
+        } 
       } else if (team === 2) {
-        setTeamScore2(prevScore => prevScore + 1);
+        setTeamScore2(prevScore => prevScore + 1);    
+      if(teamScore2>=5 ){
+        alert("Game Over T2 wins");
+        window.location.href = "/over"; // Redirect to home page
       } 
+      }
+      
       setRound(round => round + 1);  // Move to next round
 
     }
@@ -88,14 +97,6 @@ const Game = () => {
       <div className="flex flex-col justify-center">
         {/* Ensure songs array has at least one element before accessing it */}
         {currentSong && <SongBar songUrl={currentSong.url} />}
-
-        {/* <ul>
-          {songs.map((song) => (
-            <li key={song.id}>
-              {song.title} by {song.singer}
-            </li>
-          ))}
-        </ul> */}
 
         <div className="m-3">
           {options.length === 4 && (
