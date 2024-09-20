@@ -23,15 +23,12 @@ const GenreSelection = ()=>{
                 replace: true, 
                 state: {
                     genre: genre,
-                    grpName1:location.state.grpName1,
-                    grpName2: location.state.grpName2,
-                    teamColor1: location.state.teamColor1,
-                    teamColor2: location.state.teamColor2,
+                    ...location.state,
                 }
             });
             setShouldNavigate(false); // Reset navigation trigger to prevent re-render loop
         }
-    }, [shouldNavigate, genre, navigate, location]);
+        }, [shouldNavigate, genre, navigate, location]);
 
 
     return(
