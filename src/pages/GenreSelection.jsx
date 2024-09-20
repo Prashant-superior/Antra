@@ -19,7 +19,7 @@ const GenreSelection = ()=>{
     useEffect(() => {
         // Only navigate when the genre is valid and shouldNavigate is true
         if (shouldNavigate && ["English", "Hindi", "Mix"].includes(genre)) {
-            navigate('/game', { 
+            navigate('/trial', { 
                 replace: true, 
                 state: {
                     genre: genre,
