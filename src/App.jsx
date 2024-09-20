@@ -4,7 +4,7 @@ import './App.css';
 import GenreSelection from './pages/GenreSelection';
 import Game from './pages/Game';
 import Trial from './components/Trial';
-import win_page from './pages/Winning';
+import Winning from './pages/Winning';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
           <Route path="/genre" element={<GenreSelection />} />
           <Route path="/game" element={<Game />} />
           <Route path="/trial" element={<Trial />} />
-          <Route path='/over' element={<win_page />} />
+          <Route path='/winning' element={<Winning />} />
         </Routes>
       </Router>
     </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import FourOptions from "../components/FourOptions";
 import SongBar from "../components/SongBar";
@@ -17,6 +17,7 @@ const Game = () => {
   const location = useLocation();
   const genre = location.state.genre;
   const comp = useRef(null);
+  const navigate = useNavigate();
 
   // ... (keep existing functions: shuffleArray, getRandomElements, fetchSongs, handleOptionClick)
   function shuffleArray(array) {
@@ -52,12 +53,34 @@ const Game = () => {
     if (isCorrect) {
       if (team === 1) {
         setTeamScore1(prevScore => prevScore + 1);
+        if(teamScore1===4){
+          navigate('/winning',{
+            state:{
+              teamScore1:teamScore1,
+              teamScore2:teamScore2,
+              ...location.state,
+            }
+          }) 
+        } 
       } else if (team === 2) {
-        setTeamScore2(prevScore => prevScore + 1);
+        setTeamScore2(prevScore => prevScore + 1);    
+        if(teamScore2===4){
+          navigate('/winning',{
+            state:{
+              teamScore1:teamScore1,
+              teamScore2:teamScore2,
+              ...location.state,
+            }
+          }) 
+        }  
       }
-      setRound(round => round + 1);
+      
+      setRound(round => round + 1);  // Move to next round
+
     }
+    console.log(`Team ${team} clicked! Correct: ${isCorrect}`);
   };
+
   useEffect(() => {
     fetchSongs(genre);
   }, [genre]);
