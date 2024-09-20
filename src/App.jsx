@@ -17,6 +17,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/genre" element={<GenreSelection />} />
           <Route path="/game" element={<Game />} />
+          <Route path="/trial" element={<Trial />} />
           <Route path='/over' element={<win_page />} />
         </Routes>
       </Router>

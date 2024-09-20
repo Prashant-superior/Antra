@@ -14,12 +14,13 @@ const Game = () => {
   const [round, setRound] = useState(0);
   const location = useLocation();
   // console.log(location);
-
+  const genre = location.state.genre;
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
+    console.log("Shuffled array:", array);
     return array;
   }
 
@@ -28,8 +29,12 @@ const Game = () => {
     return shuffled.slice(0, count);
   }
 
-  async function fetchSongs() {
-    const { data, error } = await supabase.from('english_table').select('*');
+  async function fetchSongs(genre) {
+    let tableName;
+    if(genre === "English"){tableName = "english_table";}
+    else if(genre === "Hindi"){tableName = "hindi_table";}
+    else if(genre === "Mix"){tableName = "mix_table";}
+    const { data, error } = await supabase.from(tableName).select('*');
     if (error) {
       console.error('Error fetching songs:', error.message);
       return;
@@ -40,8 +45,8 @@ const Game = () => {
   }
 
   useEffect(() => {
-    fetchSongs();
-  }, []);
+    fetchSongs(genre);
+  }, [genre]);
 
   useEffect(() => {
     if (songs.length > 0) {
@@ -63,16 +68,16 @@ const Game = () => {
     if (isCorrect) {
       if (team === 1) {
         setTeamScore1(prevScore => prevScore + 1);
-        if(teamScore1>=5 ){
-          alert("Game Over T1 wins");
-          window.location.href = "/over"; // Redirect to home page
-        } 
+        // if(teamScore1>=4 ){
+        //   alert("Game Over T1 wins");
+        //   window.location.href = "/over"; 
+        // } 
       } else if (team === 2) {
         setTeamScore2(prevScore => prevScore + 1);    
-      if(teamScore2>=5 ){
-        alert("Game Over T2 wins");
-        window.location.href = "/over"; // Redirect to home page
-      } 
+      // if(teamScore2>=4){
+      //   alert("Game Over T2 wins");
+      //   window.location.href = "/over"; 
+      // } 
       }
       
       setRound(round => round + 1);  // Move to next round
@@ -117,6 +122,6 @@ const Game = () => {
       </div>
     </>
   );
-}
+};
 
 export default Game;
