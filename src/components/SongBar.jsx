@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,useEffect } from 'react';
 
 const IconPlay = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
@@ -21,6 +21,7 @@ export default function SongBar({ songUrl, albumCover, title, artist }) {
     const audioRef = useRef(null);
 
     const togglePlay = () => {
+        
         if (isPlaying) {
             audioRef.current.pause();
         } else {
@@ -42,7 +43,8 @@ export default function SongBar({ songUrl, albumCover, title, artist }) {
         const seconds = Math.floor(time % 60);
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
-
+    
+    
     return (
         <>
             <div className='flex flex-col items-center justify-center '>

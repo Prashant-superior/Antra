@@ -18,7 +18,7 @@ const Game = () => {
   const genre = location.state.genre;
   const comp = useRef(null);
 
-  // ... (keep the existing functions: shuffleArray, getRandomElements, fetchSongs)
+  // ... (keep existing functions: shuffleArray, getRandomElements, fetchSongs, handleOptionClick)
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -48,6 +48,16 @@ const Game = () => {
     console.log("Fetched and shuffled data:", shuffledSongs); // Log the shuffled data
   }
 
+  const handleOptionClick = (team, isCorrect) => {
+    if (isCorrect) {
+      if (team === 1) {
+        setTeamScore1(prevScore => prevScore + 1);
+      } else if (team === 2) {
+        setTeamScore2(prevScore => prevScore + 1);
+      }
+      setRound(round => round + 1);
+    }
+  };
   useEffect(() => {
     fetchSongs(genre);
   }, [genre]);
@@ -61,17 +71,6 @@ const Game = () => {
       setOptions(allOptions);
     }
   }, [songs, round]);
-
-  const handleOptionClick = (team, isCorrect) => {
-    if (isCorrect) {
-      if (team === 1) {
-        setTeamScore1(prevScore => prevScore + 1);
-      } else if (team === 2) {
-        setTeamScore2(prevScore => prevScore + 1);
-      }
-      setRound(round => round + 1);
-    }
-  };
 
   useEffect(() => {
     if (comp.current) {
@@ -114,6 +113,7 @@ const Game = () => {
             yPercent: -100,
             duration: 1,
           });
+        // ... (keep existing animation logic)
       }, comp);
 
       return () => ctx.revert();
@@ -121,10 +121,10 @@ const Game = () => {
   }, []);
 
   return (
-    <div className="relative" ref={comp}>
+    <div className="relative h-screen overflow-hidden" ref={comp}>
       {/* Black screen with ANTRA text */}
       <div id="black-screen" className="fixed inset-0 bg-black z-50 items-center justify-center hidden">
-        <h1 id="antra-text" className="text-white text-6xl font-bold font-spaceGrotesk">ANTRA</h1>
+        <h1 id="antra-text" className="text-white text-6xl font-bold font-spaceGrotesk">antra</h1>
       </div>
 
       {/* Blur effect */}
@@ -136,21 +136,21 @@ const Game = () => {
         className="fixed inset-0 p-10 z-50 flex flex-col font-spaceGrotesk justify-center items-start gap-10 tracking-tight hidden"
       >
         <h1 className="text-6xl sm:text-9xl" id="title-1">LET'S THE</h1>
-        <h1 className="text-6xl sm:text-9xl" id="title-2">MAGIC OF aNNTRA</h1>
+        <h1 className="text-6xl sm:text-9xl" id="title-2">MAGIC OF aNTRa</h1>
         <h1 className="text-6xl sm:text-9xl" id="title-3">BEGIN</h1>
       </div>
 
       {/* Main game content */}
-      <div className={`bg-gradient-to-r from-rose-100 to-teal-100 min-h-screen ${introComplete ? '' : 'hidden'}`}>
-        <div className="flex justify-around pt-10 mx-10">
+      <div className={`bg-gradient-to-r from-rose-100 to-teal-100 h-full flex flex-col ${introComplete ? '' : 'hidden'}`}>
+        <div className="flex justify-around pt-10 mx-4 flex-shrink-0">
           <ScoreCard teamColor={location.state.teamColor1} teamScore={teamScore1} teamName={location.state.grpName1} />
           <ScoreCard teamColor={location.state.teamColor2} teamScore={teamScore2} teamName={location.state.grpName2} />
         </div>
 
-        <div className="flex flex-col justify-center">
+        <div className="flex-grow  justify-center">
           {currentSong && <SongBar songUrl={currentSong.url} />}
 
-          <div className="m-3">
+          <div className="mx-3 mb-4">
             {options.length === 4 && (
               <FourOptions
                 col1={location.state.teamColor1}
