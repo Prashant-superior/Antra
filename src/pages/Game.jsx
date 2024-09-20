@@ -4,6 +4,10 @@ import SongBar from "../components/SongBar";
 import { supabase } from '../services/supabaseClient';
 import { useLocation } from "react-router-dom";
 import ScoreCard from "../components/ScoreCard";
+import { useLayoutEffect, useRef } from "react"
+import gsap from "gsap"
+
+
 
 const Game = () => {
   const [songs, setSongs] = useState([]);
@@ -13,7 +17,7 @@ const Game = () => {
   const [teamScore2, setTeamScore2] = useState(0);
   const [round, setRound] = useState(0);
   const location = useLocation();
-  // console.log(location);
+  console.log(location);
   const genre = location.state.genre;
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -87,10 +91,65 @@ const Game = () => {
   };
 
 
+  
+const comp = useRef(null)
+
+useLayoutEffect(() => {
+  let ctx = gsap.context(() => {
+    const t1 = gsap.timeline()
+    t1.from("#intro-slider", {
+      xPercent: "-100",
+      duration: 1.3,
+      delay: 0.3,
+    })
+      .from(["#title-1", "#title-2", "#title-3"], {
+        opacity: 0,
+        y: "+=30",
+        stagger: 0.5,
+      })
+      .to(["#title-1", "#title-2", "#title-3"], {
+        opacity: 0,
+        y: "-=30",
+        delay: 0.3,
+        stagger: 0.5,
+      })
+      .to("#intro-slider", {
+        xPercent: "-100",
+        duration: 1.3,
+      })
+      .from("#welcome", {
+        opacity: 0,
+        duration: 0.5,
+      })
+  }, comp)
+
+  return () => ctx.revert()
+}, [])
+
+
+
+
+
+
 
   return (
     <>
-
+    <div className="relative" ref={comp}>
+      <div
+        id="intro-slider"
+        className="h-svh p-10 bg-gray-50 absolute top-0 left-0 font-spaceGrotesk z-10 w-full flex flex-col gap-10 tracking-tight"
+      >
+        <h1 className="text-9xl" id="title-1">
+          LET'S THE
+        </h1>
+        <h1 className="text-9xl" id="title-2">
+          MAGIC OF aNNTRA
+        </h1>
+        <h1 className="text-9xl" id="title-3">
+          BEGIN
+        </h1>
+      </div>
+      <div>
       <div className="flex justify-around pt-10 mx-10">
       <ScoreCard teamColor={location.state.teamColor1} teamScore={teamScore1} teamName={location.state.grpName1}/>
       <ScoreCard teamColor={location.state.teamColor2} teamScore={teamScore2} teamName={location.state.grpName2}/>
@@ -120,6 +179,10 @@ const Game = () => {
         </div>
         
       </div>
+      </div>
+    </div>
+
+      
     </>
   );
 };
