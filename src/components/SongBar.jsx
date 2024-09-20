@@ -64,7 +64,7 @@ export default function SongBar({ songUrl, albumCover, title, artist }) {
                     </div>
                 </div>
                 <div>
-                    <div className="bg-white shadow-lg rounded-lg w-[45rem]">
+                    <div className="bg-white shadow-lg rounded-lg w-[50rem]">
                         <div className="mx-8 py-4">
                             <div className="flex justify-between text-sm text-gray-500">
                                 <p>{formatTime(currentTime)}</p>
