@@ -1,27 +1,33 @@
-import React, { useState, useRef,useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const IconPlay = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10 fill-white">
         <polygon points="5 3 19 12 5 21 5 3"></polygon>
     </svg>
 );
 
 const IconPause = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10">
         <rect x="6" y="4" width="4" height="16"></rect>
         <rect x="14" y="4" width="4" height="16"></rect>
     </svg>
 );
 
 
-export default function SongBar({ songUrl, albumCover, title, artist }) {
-    const [isPlaying, setIsPlaying] = useState(false);
+export default function SongBar({ songUrl }) {
+    const [isPlaying, setIsPlaying] = useState(true);
     const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
-    const audioRef = useRef(null);
+    const [duration, setDuration] = useState(1);
+    const audioRef = useRef(songUrl);
+
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.play();
+        }
+    }, []);
 
     const togglePlay = () => {
-        
+
         if (isPlaying) {
             audioRef.current.pause();
         } else {
@@ -43,8 +49,15 @@ export default function SongBar({ songUrl, albumCover, title, artist }) {
         const seconds = Math.floor(time % 60);
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
-    
-    
+    const handleSeek = (event) => {
+        const seekBar = event.target;
+        const rect = seekBar.getBoundingClientRect();
+        const offsetX = event.clientX - rect.left;
+        const newTime = Math.max(0, Math.min((offsetX / seekBar.clientWidth) * duration, duration));
+        audioRef.current.currentTime = newTime;
+        setCurrentTime(newTime);
+    };
+
     return (
         <>
             <div className='flex flex-col items-center justify-center '>
@@ -56,7 +69,7 @@ export default function SongBar({ songUrl, albumCover, title, artist }) {
                             <div className="flex justify-between items-center ">
                                 <button
                                     onClick={togglePlay}
-                                    className="text-white p-4 rounded-full bg-red-400 shadow-lg"
+                                    className="text-white p-8 rounded-full bg-red-400 shadow-lg "
                                 >
                                     {isPlaying ? <IconPause /> : <IconPlay />}
                                 </button>
@@ -73,12 +86,12 @@ export default function SongBar({ songUrl, albumCover, title, artist }) {
                                 <p>{formatTime(duration)}</p>
                             </div>
                             <div className="mt-1">
-                                <div className="h-1 bg-gray-600 rounded-full">
+                                <div className="h-2 bg-gray-600 rounded-full cursor-pointer" onClick={handleSeek}>
                                     <div
-                                        className="h-1 bg-red-400 rounded-full relative"
+                                        className="h-2 bg-red-400 rounded-full relative"
                                         style={{ width: `${(currentTime / duration) * 100}%` }}
                                     >
-                                        <span className="w-3 h-3 bg-red-500 absolute right-0 bottom-0 -mb-1 rounded-full shadow"></span>
+                                        <span className="w-4 h-4 bg-red-500 pl-1 absolute right-[-0.25rem] bottom-0 -mb-1 rounded-full shadow"></span>
                                     </div>
                                 </div>
                             </div>
@@ -89,17 +102,11 @@ export default function SongBar({ songUrl, albumCover, title, artist }) {
                         src={songUrl}
                         onTimeUpdate={handleTimeUpdate}
                         onLoadedMetadata={handleLoadedMetadata}
+                        autoPlay
                     />
                 </div>
 
             </div>
-
-
-
-
-
-
-
         </>
     );
 }

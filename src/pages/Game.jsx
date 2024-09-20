@@ -18,6 +18,7 @@ const Game = () => {
   const [round, setRound] = useState(0);
   const location = useLocation();
   console.log(location);
+  
   const genre = location.state.genre;
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -72,16 +73,16 @@ const Game = () => {
     if (isCorrect) {
       if (team === 1) {
         setTeamScore1(prevScore => prevScore + 1);
-        // if(teamScore1>=4 ){
-        //   alert("Game Over T1 wins");
-        //   window.location.href = "/over"; 
-        // } 
+        if(teamScore1>=4 ){
+          alert("Game Over T1 wins");
+          window.location.href = "/over"; 
+        } 
       } else if (team === 2) {
         setTeamScore2(prevScore => prevScore + 1);    
-      // if(teamScore2>=4){
-      //   alert("Game Over T2 wins");
-      //   window.location.href = "/over"; 
-      // } 
+      if(teamScore2>=4){
+        alert("Game Over T2 wins");
+        window.location.href = "/over"; 
+      } 
       }
       
       setRound(round => round + 1);  // Move to next round

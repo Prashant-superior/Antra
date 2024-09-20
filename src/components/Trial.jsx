@@ -136,7 +136,7 @@ const Game = () => {
         className="fixed inset-0 p-10 z-50 flex flex-col font-spaceGrotesk justify-center items-start gap-10 tracking-tight hidden"
       >
         <h1 className="text-6xl sm:text-9xl" id="title-1">LET'S THE</h1>
-        <h1 className="text-6xl sm:text-9xl" id="title-2">MAGIC OF aNTRa</h1>
+        <h1 className="text-6xl sm:text-9xl" id="title-2">MAGIC OF <span className="italic text-red-400"> antra </span></h1>
         <h1 className="text-6xl sm:text-9xl" id="title-3">BEGIN</h1>
       </div>
 
