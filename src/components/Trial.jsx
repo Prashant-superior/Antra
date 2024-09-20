@@ -50,7 +50,7 @@ const Trial = () => {
           MAGIC OF aNNTRA
         </h1>
         <h1 className="text-9xl" id="title-3">
-          BEGIN.
+          BEGIN
         </h1>
       </div>
       <div className="h-screen flex bg-gray-950 justify-center place-items-center">
