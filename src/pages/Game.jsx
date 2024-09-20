@@ -137,7 +137,7 @@ useLayoutEffect(() => {
     <div className="relative" ref={comp}>
       <div
         id="intro-slider"
-        className="h-svh p-10 backdrop-blur-md bg-white/30 absolute top-0 left-0 font-spaceGrotesk z-10 w-full flex flex-col gap-10 tracking-tight"
+        className="fixed inset-0 p-10 backdrop-blur-md bg-white/30 top-0 left-0 font-spaceGrotesk z-10 w-full flex flex-col gap-10 tracking-tight"
       >
         <h1 className="text-9xl" id="title-1">
           LET'S THE
