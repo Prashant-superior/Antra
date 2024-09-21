@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
-
-import './App.css';
-import GenreSelection from './pages/GenreSelection';
-import Game from './pages/Game';
-import Trial from './components/Trial';
-import Winning from './pages/Winning';
+import LandingPage from './pages/LandingPage.jsx';
+import GenreSelection from './pages/GenreSelection.jsx';
+import Game from './pages/Game.jsx';
+import Trial from './components/Trial.jsx';
+import Winning from './pages/Winning.jsx';
 
 function App() {
   return (
