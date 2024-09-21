@@ -16,23 +16,25 @@ const Winning = () => {
     const im = "src/images/genreImage/sampsoid-sampsoid-racing.gif";
     useEffect(() => {
         if (location.state.teamScore1 > location.state.teamScore2) {
-            // location.state.teamScore1+=1;
-            setImg1('src/images/genreImage/cat-jump.gif');
+            location.state.teamScore1=5;
+            // console.log(location.state.teamScore1);
+            setImg1('src/images/genreImage/cat.gif');
             setImg2('src/images/genreImage/cat-stare.gif');
             setImg11('src/images/genreImage/krone-crown.gif')
             setImg22('src/images/genreImage/fun-kid.gif')
-            setImg1bg('src/images/genreImage/sampsoid-sampsoid-racing.gif')
-            setImg2bg('src/images/genreImage/ice.gif')
+            // setImg1bg('src/images/genreImage/sampsoid-sampsoid-racing.gif')
+            // setImg2bg('src/images/genreImage/ice.gif')
         }
         else {
-            // location.state.teamScore2+=1;
+            location.state.teamScore2=5;
 
+            // console.log(location.state.teamScore2);
             setImg1('src/images/genreImage/cat-stare.gif');
-            setImg2('src/images/genreImage/cat-jump.gif');
+            setImg2('src/images/genreImage/cat.gif');
             setImg22('src/images/genreImage/krone-crown.gif')
             setImg11('src/images/genreImage/fun-kid.gif')
-            setImg1bg('src/images/genreImage/ice.gif')
-            setImg2bg('src/images/genreImage/sampsoid-sampsoid-racing.gif')
+            // setImg1bg('src/images/genreImage/ice.gif')
+            // setImg2bg('src/images/genreImage/sampsoid-sampsoid-racing.gif')
         }
     }, []);
 
@@ -53,7 +55,7 @@ const Winning = () => {
         <div>
 
             
-            <div className="flex justify-around pt-5" >
+            <div className="flex justify-around pt-12" >
                 <div className="flex flex-col" style={{
                 backgroundImage: `url(${img1bg})`,
                 backgroundSize: 'cover',  // Ensures the background covers the entire div
@@ -71,13 +73,13 @@ const Winning = () => {
                     </div>
 
                 </div>
-                <div className="flex flex-col"style={{
+                <div className="flex flex-col "style={{
                 backgroundImage: `url(${img2bg})`,
                 backgroundSize: 'cover',  // Ensures the background covers the entire div
                 backgroundPosition: 'center',  // Centers the background image
                   // Set width to full
             }}>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center ">
                         <img src={img22} alt="" className="h-24 w-24" />
                     </div>
                     <div className="p-5">
@@ -95,7 +97,7 @@ const Winning = () => {
                     <span className="min-w-96 relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
                         <span className="min-w-96 absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
                         <span className="min-w-96 absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
-                        <span className="relative">`   Re  Take   `</span>
+                        <span className="relative">Play Again</span>
                     </span>
                     <span className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0" data-rounded="rounded-lg"></span>
                 </a>
