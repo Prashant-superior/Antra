@@ -158,9 +158,9 @@ const Game = () => {
         id="intro-slider"
         className="fixed inset-0 p-10 z-50 flex flex-col font-spaceGrotesk justify-center items-start gap-10 tracking-tight hidden"
       >
-        <h1 className="text-6xl sm:text-9xl" id="title-1">LET THE</h1>
-        <h1 className="text-6xl sm:text-9xl" id="title-2">MAGIC OF <span className="italic text-red-400"> antra </span></h1>
-        <h1 className="text-6xl sm:text-9xl" id="title-3">BEGIN</h1>
+        <h1 className="text-6xl sm:text-9xl font-spaceGrotesk" id="title-1 ">LET THE</h1>
+        <h1 className="text-6xl sm:text-9xl font-spaceGrotesk" id="title-2">MAGIC OF <span className="italic text-red-400"> antra </span></h1>
+        <h1 className="text-6xl sm:text-9xl font-spaceGrotesk" id="title-3">BEGIN</h1>
       </div>
 
       {/* Main game content */}

@@ -35,7 +35,7 @@ const GenreSelection = ()=>{
         <>
        
         <div className="h-full flex flex-col justify-center	items-center min-h-screen">
-        <div className='font-semibold text-center text-lg '> Select genre </div>
+        <div className='font-semibold text-center text-lg font-spaceGrotesk'> Select genre </div>
             <div className="w-full flex flex-row justify-center">
                 <div  onClick={() => handleClick("English")}>
                     <img className="h-auto max-w-sm rounded-lg m-5     
