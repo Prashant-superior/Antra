@@ -39,9 +39,10 @@ const LandingPage = () => {
             teamColor2: teamColor2
         }});
     }
-
     return (
+        
         <div className="flex items-center justify-center pt-14">
+            
             <div className="flex flex-col space-y-6">
                 <div className=" ">
                     <div className=" flex flex-col">
@@ -57,14 +58,11 @@ const LandingPage = () => {
                             ))}
                         </div>
                     </div>
-
                     <div className="mb-8 flex flex-col">
                         <label htmlFor="Team 1 Name" className="block mb-2 pt-1 px-2 text-start text-lg font-medium text-gray-900 dark:text-black">Team 1 Name</label>
-                        <input type="text" id="Team 1 Name" className="bg-gray-50 border border-gray-300 text-zinc-950 text-sm font-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" style={{ backgroundColor: teamColor1 }} onChange={(e) => handlename1(e)} />
+                        <input type="text" id="Team 1 Name" className="bg-gray-50 border border-gray-300 text-zinc-950 text-sm font-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Team 1 name" style={{ backgroundColor: teamColor1 }} onChange={(e) => handlename1(e)} />
                     </div>
                 </div>
-
-
                 <div>
                     <div className="mb-2 flex flex-col">
                         <label className="block mb-2 px-2 text-start text-lg font-medium text-gray-900 dark:text-black">Select Team Color</label>
@@ -79,13 +77,11 @@ const LandingPage = () => {
                             ))}
                         </div>
                     </div>
-
                     <div className="mb-1 flex flex-col">
                         <label htmlFor="Team 2 Name" className="block mb-2 px-2 text-start text-lg font-medium text-gray-900 dark:text-black">Team 2 Name</label>
-                        <input type="text" id="Team 2 Name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm font-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" style={{ backgroundColor: teamColor2 }} onChange={(e) => handlename2(e)} />
+                        <input type="text" id="Team 2 Name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm font-medium rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Team 2 name" style={{ backgroundColor: teamColor2 }} onChange={(e) => handlename2(e)} />
                     </div>
                 </div>
-
                 <div>
                     <a onClick={nav} className="relative w-full inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-black rounded shadow-md group">
                         <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-black group-hover:translate-x-0 ease">
@@ -96,7 +92,6 @@ const LandingPage = () => {
                     </a>
                 </div>
             </div>
-
         </div>
     )
 }

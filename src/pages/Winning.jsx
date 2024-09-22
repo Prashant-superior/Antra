@@ -16,7 +16,7 @@ const Winning = () => {
     const im = "src/images/genreImage/sampsoid-sampsoid-racing.gif";
     useEffect(() => {
         if (location.state.teamScore1 > location.state.teamScore2) {
-            location.state.teamScore1=5;
+            location.state.teamScore1=10;
             // console.log(location.state.teamScore1);
             setImg1('https://ylntqzcdismadpijbtvq.supabase.co/storage/v1/object/sign/songs/Image/cat.gif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJzb25ncy9JbWFnZS9jYXQuZ2lmIiwiaWF0IjoxNzI2OTI2MDcyLCJleHAiOjE3NTg0NjIwNzJ9.QFDjk8JSCa_MmsxnzhKCV3TRjJQgzIkM4nHmi026Xp0&t=2024-09-21T13%3A40%3A50.251Z');
             setImg2('https://ylntqzcdismadpijbtvq.supabase.co/storage/v1/object/sign/songs/Image/cat-stare.gif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJzb25ncy9JbWFnZS9jYXQtc3RhcmUuZ2lmIiwiaWF0IjoxNzI2OTI2MTAyLCJleHAiOjE3NTg0NjIxMDJ9.KiAWOwnOICl9YynECJNnI5wju5mG3g7j4BETHPNeVQs&t=2024-09-21T13%3A41%3A19.669Z');
@@ -25,8 +25,8 @@ const Winning = () => {
             // setImg1bg('src/images/genreImage/sampsoid-sampsoid-racing.gif')
             // setImg2bg('src/images/genreImage/ice.gif')
         }
-        else {
-            location.state.teamScore2=5;
+        else {      
+            location.state.teamScore2=10;
 
             // console.log(location.state.teamScore2);
             setImg1('https://ylntqzcdismadpijbtvq.supabase.co/storage/v1/object/sign/songs/Image/cat-stare.gif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJzb25ncy9JbWFnZS9jYXQtc3RhcmUuZ2lmIiwiaWF0IjoxNzI2OTI2MTAyLCJleHAiOjE3NTg0NjIxMDJ9.KiAWOwnOICl9YynECJNnI5wju5mG3g7j4BETHPNeVQs&t=2024-09-21T13%3A41%3A19.669Z');

@@ -52,8 +52,8 @@ const Game = () => {
   const handleOptionClick = (team, isCorrect) => {
     if (isCorrect) {
       if (team === 1) {
-        setTeamScore1(prevScore => prevScore + 1);
-        if(teamScore1===4){
+        setTeamScore1(prevScore => prevScore + 2);
+        if(teamScore1===8){
           navigate('/winning',{
             state:{
               teamScore1:teamScore1,
@@ -63,8 +63,8 @@ const Game = () => {
           }) 
         } 
       } else if (team === 2) {
-        setTeamScore2(prevScore => prevScore + 1);    
-        if(teamScore2===4){
+        setTeamScore2(prevScore => prevScore + 2);    
+        if(teamScore2===8){
           navigate('/winning',{
             state:{
               teamScore1:teamScore1,
@@ -158,7 +158,7 @@ const Game = () => {
         id="intro-slider"
         className="fixed inset-0 p-10 z-50 flex flex-col font-spaceGrotesk justify-center items-start gap-10 tracking-tight hidden"
       >
-        <h1 className="text-6xl sm:text-9xl" id="title-1">LET'S THE</h1>
+        <h1 className="text-6xl sm:text-9xl" id="title-1">LET THE</h1>
         <h1 className="text-6xl sm:text-9xl" id="title-2">MAGIC OF <span className="italic text-red-400"> antra </span></h1>
         <h1 className="text-6xl sm:text-9xl" id="title-3">BEGIN</h1>
       </div>
